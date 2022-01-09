@@ -2,7 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: crypto-exchange-price-action
-  labels: momoli-price-action
+  labels:
+    app: momoli-price-action
 spec:
   replicas: 1
   selector:
