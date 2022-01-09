@@ -2,10 +2,11 @@
 <configuration>
     <contextName>Kripto-API</contextName>
 
-    <property level="info" name="CONSOLE_LOG_PATTERN" value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} [%clr(%-15.15t{14}){faint}][%clr(%-5level)][%clr(%-32.32logger{0}){cyan}] - %clr(:){faint} %m%n%wex"/>
+    <property level="info" name="CONSOLE_LOG_PATTERN" value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} [%clr(%-15.15t{14}){faint}][%clr(%-5level)][%clr(%-32.32logger{0}){cyan}] -[%clr(%-8.8(${serverName:-${HOSTNAME}})){blue}]- %clr(:){faint} %m%n%wex"/>
     <property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%-15.15t{14}][%-5level][%-25.25logger{0}] - [userId:%X{user}] : %m%n%wex"/>
 
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <springProperty scope="context" name="serverName" source="HOSTNAME" />
     <jmxConfigurator/>
 
     <property name="LOG_FILE_DEBUG" value="log/kripto-debug"/>
