@@ -1,4 +1,4 @@
-cd ../
+cd ../../
 
 killall -9 java
 

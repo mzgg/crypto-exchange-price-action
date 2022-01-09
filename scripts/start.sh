@@ -1,5 +1,6 @@
+cd ../
 
-git pull https://mzgg:12345678@bitbucket.org/mzgg/kripto-arbitraj.git master
+git pull https://github.com/mzgg/crypto-exchange-price-action.git
 
 mvn clean install
 
