@@ -67,7 +67,7 @@
             <!-- rollover daily -->
             <fileNamePattern>${LOG_FILE_ERROR}.%d{yyyy-MM-dd}.log</fileNamePattern>
             <!-- keep 30 days' worth of history -->
-            <maxHistory>5</maxHistory>
+            <maxHistory>10</maxHistory>
         </rollingPolicy>
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>ERROR</level>
