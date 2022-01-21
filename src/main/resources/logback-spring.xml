@@ -23,8 +23,12 @@
             <!-- rollover daily -->
             <fileNamePattern>${LOG_FILE_DEBUG}.%d{yyyy-MM-dd}.log</fileNamePattern>
             <!-- keep 30 days' worth of history -->
-            <maxHistory>30</maxHistory>
+            <maxHistory>5</maxHistory>
         </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>1GB</maxFileSize>
+        </triggeringPolicy>
+
     </appender>
 
 
@@ -38,13 +42,17 @@
             <!-- rollover daily -->
             <fileNamePattern>${LOG_FILE_INFO}.%d{yyyy-MM-dd}.log</fileNamePattern>
             <!-- keep 30 days' worth of history -->
-            <maxHistory>30</maxHistory>
+            <maxHistory>5</maxHistory>
         </rollingPolicy>
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>INFO</level>
             <onMatch>ACCEPT</onMatch>
             <onMismatch>DENY</onMismatch>
         </filter>
+
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>1GB</maxFileSize>
+        </triggeringPolicy>
     </appender>
 
 
@@ -59,13 +67,16 @@
             <!-- rollover daily -->
             <fileNamePattern>${LOG_FILE_ERROR}.%d{yyyy-MM-dd}.log</fileNamePattern>
             <!-- keep 30 days' worth of history -->
-            <maxHistory>30</maxHistory>
+            <maxHistory>5</maxHistory>
         </rollingPolicy>
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>ERROR</level>
             <onMatch>ACCEPT</onMatch>
             <onMismatch>DENY</onMismatch>
         </filter>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>1GB</maxFileSize>
+        </triggeringPolicy>
     </appender>
 
     <root level="DEBUG" additivity="false">
