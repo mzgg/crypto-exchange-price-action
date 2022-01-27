@@ -1,8 +1,7 @@
 package com.mehmetzahit.kripto.exchange.gateio.client;
 
 
-
-
+import com.mehmetzahit.kripto.exchange.gateio.config.GateIOClientConfig;
 import com.mehmetzahit.kripto.exchange.gateio.resource.GateIOResponse;
 import com.mehmetzahit.kripto.exchange.gateio.resource.OrderBookResponse;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 
-@FeignClient(value = "gateio", url = "${exchange.gateio.spot.url}")
+@FeignClient(value = "gateio", url = "${exchange.gateio.spot.url}", configuration = GateIOClientConfig.class)
 public interface GateIOClient {
 
 	@RequestMapping(method = RequestMethod.GET, value = "spot/trades?limit=1")
