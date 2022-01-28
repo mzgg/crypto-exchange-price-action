@@ -9,7 +9,7 @@ public class GateIOClientConfig {
 
 	@Bean
 	public Retryer retryer() {
-		return new Retryer.Default(2, 20, 50);
+		return new Retryer.Default(10, 30, 3);
 	}
 
 }
