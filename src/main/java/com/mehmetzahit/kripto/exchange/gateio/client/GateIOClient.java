@@ -3,6 +3,7 @@ package com.mehmetzahit.kripto.exchange.gateio.client;
 
 import com.mehmetzahit.kripto.exchange.gateio.config.GateIOClientConfig;
 import com.mehmetzahit.kripto.exchange.gateio.resource.GateIOResponse;
+import com.mehmetzahit.kripto.exchange.gateio.resource.GetTickerResponse;
 import com.mehmetzahit.kripto.exchange.gateio.resource.OrderBookResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,9 @@ public interface GateIOClient {
 									 @RequestParam(value = "from") String from,
 									 @RequestParam(value = "to") String to,
 									 @RequestParam(value = "limit") String limit);
+
+	@RequestMapping(method = RequestMethod.GET, value = "spot/tickers")
+	List<GetTickerResponse> getTickers(@RequestParam(value = "currency_pair") String symbol);
 
 }
 
