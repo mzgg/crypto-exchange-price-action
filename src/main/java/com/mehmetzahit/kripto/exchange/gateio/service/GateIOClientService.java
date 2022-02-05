@@ -4,6 +4,7 @@ package com.mehmetzahit.kripto.exchange.gateio.service;
 import com.mehmetzahit.kripto.exchange.BaseClient;
 import com.mehmetzahit.kripto.exchange.enums.ExchangeMarketType;
 import com.mehmetzahit.kripto.exchange.gateio.client.GateIOClient;
+import com.mehmetzahit.kripto.exchange.gateio.resource.AllCurrencyResponse;
 import com.mehmetzahit.kripto.exchange.gateio.resource.GateIOResponse;
 import com.mehmetzahit.kripto.exchange.gateio.resource.GetTickerResponse;
 import feign.RetryableException;
@@ -64,6 +65,19 @@ public class GateIOClientService extends BaseClient {
 			}
 		} catch (Exception ex) {
 			log.error("get price is error from gateIO market, symbol:{}, cause:{}", symbol, ex.getMessage());
+		}
+		return Collections.emptyList();
+	}
+
+	@Retryable(value = {RetryableException.class}, maxAttempts = 2, backoff = @Backoff(delay = 20))
+	public List<AllCurrencyResponse> getAllCurrency( ) {
+		try {
+			List<AllCurrencyResponse> getTickerResponse = gateIOClient.getAllCurrency();
+			if (!ObjectUtils.isEmpty(getTickerResponse)) {
+				return getTickerResponse;
+			}
+		} catch (Exception ex) {
+			log.error("get all curreny is error from gateIO market, cause:{}", ex.getMessage());
 		}
 		return Collections.emptyList();
 	}

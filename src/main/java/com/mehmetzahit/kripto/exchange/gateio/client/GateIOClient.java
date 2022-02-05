@@ -2,6 +2,7 @@ package com.mehmetzahit.kripto.exchange.gateio.client;
 
 
 import com.mehmetzahit.kripto.exchange.gateio.config.GateIOClientConfig;
+import com.mehmetzahit.kripto.exchange.gateio.resource.AllCurrencyResponse;
 import com.mehmetzahit.kripto.exchange.gateio.resource.GateIOResponse;
 import com.mehmetzahit.kripto.exchange.gateio.resource.GetTickerResponse;
 import com.mehmetzahit.kripto.exchange.gateio.resource.OrderBookResponse;
@@ -31,6 +32,10 @@ public interface GateIOClient {
 
 	@RequestMapping(method = RequestMethod.GET, value = "spot/tickers")
 	List<GetTickerResponse> getTickers(@RequestParam(value = "currency_pair") String symbol);
+
+
+	@RequestMapping(method = RequestMethod.GET, value = "spot/currency_pairs")
+	List<AllCurrencyResponse> getAllCurrency();
 
 }
 

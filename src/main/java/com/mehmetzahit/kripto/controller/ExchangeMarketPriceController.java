@@ -1,5 +1,6 @@
 package com.mehmetzahit.kripto.controller;
 
+import com.mehmetzahit.kripto.exchange.gateio.resource.AllCurrencyResponse;
 import com.mehmetzahit.kripto.exchange.gateio.resource.GateIOResponse;
 import com.mehmetzahit.kripto.exchange.gateio.resource.GetTickerResponse;
 import com.mehmetzahit.kripto.exchange.gateio.service.GateIOClientService;
@@ -25,5 +26,10 @@ public class ExchangeMarketPriceController {
 	@GetMapping("/gateio/spot/tickers")
 	public List<GetTickerResponse> getTicker(@RequestParam(name = "currency_pair") String symbol) {
 		return gateIOClientService.getTickers(symbol);
+	}
+
+	@GetMapping("/gateio/spot/currency_pairs")
+	public List<AllCurrencyResponse> getAllCurrency() {
+		return gateIOClientService.getAllCurrency();
 	}
 }
