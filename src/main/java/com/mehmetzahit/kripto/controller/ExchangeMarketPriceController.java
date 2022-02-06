@@ -1,11 +1,13 @@
 package com.mehmetzahit.kripto.controller;
 
+import com.mehmetzahit.kripto.config.cache.GuavaCacheManagerConfig;
 import com.mehmetzahit.kripto.exchange.gateio.resource.AllCurrencyResponse;
 import com.mehmetzahit.kripto.exchange.gateio.resource.GateIOResponse;
 import com.mehmetzahit.kripto.exchange.gateio.resource.GetTickerResponse;
 import com.mehmetzahit.kripto.exchange.gateio.resource.OrderBookResponse;
 import com.mehmetzahit.kripto.exchange.gateio.service.GateIOClientService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +31,7 @@ public class ExchangeMarketPriceController {
 		return gateIOClientService.getTickers(symbol);
 	}
 
+	@Cacheable(value = "allcurrenies", key = "'value'", unless = "#result.empty", cacheManager = GuavaCacheManagerConfig.ONE_MINUTE)
 	@GetMapping("/gateio/spot/currency_pairs")
 	public List<AllCurrencyResponse> getAllCurrency() {
 		return gateIOClientService.getAllCurrency();
