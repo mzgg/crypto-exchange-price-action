@@ -21,7 +21,7 @@ public interface GateIOClient {
 	List<GateIOResponse> getPairData(@RequestParam(value = "currency_pair") String symbol);
 
 	@RequestMapping(method = RequestMethod.GET, value = "spot/order_book")
-	OrderBookResponse orderBook(@RequestParam(value = "currency_pair") String symbol, @RequestParam(value = "limit") String limit);
+	OrderBookResponse getOrderBook(@RequestParam(value = "currency_pair") String symbol, @RequestParam(value = "limit") String limit);
 
 
 	@RequestMapping(method = RequestMethod.GET, value = "spot/trades")

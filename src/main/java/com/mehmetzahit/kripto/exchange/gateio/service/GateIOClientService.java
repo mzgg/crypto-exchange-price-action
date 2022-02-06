@@ -7,6 +7,7 @@ import com.mehmetzahit.kripto.exchange.gateio.client.GateIOClient;
 import com.mehmetzahit.kripto.exchange.gateio.resource.AllCurrencyResponse;
 import com.mehmetzahit.kripto.exchange.gateio.resource.GateIOResponse;
 import com.mehmetzahit.kripto.exchange.gateio.resource.GetTickerResponse;
+import com.mehmetzahit.kripto.exchange.gateio.resource.OrderBookResponse;
 import feign.RetryableException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -70,7 +71,7 @@ public class GateIOClientService extends BaseClient {
 	}
 
 	@Retryable(value = {RetryableException.class}, maxAttempts = 2, backoff = @Backoff(delay = 20))
-	public List<AllCurrencyResponse> getAllCurrency( ) {
+	public List<AllCurrencyResponse> getAllCurrency() {
 		try {
 			List<AllCurrencyResponse> getTickerResponse = gateIOClient.getAllCurrency();
 			if (!ObjectUtils.isEmpty(getTickerResponse)) {
@@ -80,6 +81,16 @@ public class GateIOClientService extends BaseClient {
 			log.error("get all curreny is error from gateIO market, cause:{}", ex.getMessage());
 		}
 		return Collections.emptyList();
+	}
+
+	@Retryable(value = {RetryableException.class}, maxAttempts = 2, backoff = @Backoff(delay = 20))
+	public OrderBookResponse gerOrderBook(String symbol, String limit) {
+		try {
+			return gateIOClient.getOrderBook(symbol, limit);
+		} catch (Exception ex) {
+			log.error("get all curreny is error from gateIO market, cause:{}", ex.getMessage());
+		}
+		return null;
 	}
 
 }
