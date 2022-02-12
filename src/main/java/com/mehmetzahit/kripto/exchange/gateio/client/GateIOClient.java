@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 
-@FeignClient(value = "gateio", url = "${exchange.gateio.spot.url}", configuration = GateIOClientConfig.class)
+@FeignClient(value = "gateio", url = "${exchange.gateio.spot.url}")
 public interface GateIOClient {
 
 	@RequestMapping(method = RequestMethod.GET, value = "spot/trades?limit=1")

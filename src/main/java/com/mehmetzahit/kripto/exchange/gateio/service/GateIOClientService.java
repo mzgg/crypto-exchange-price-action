@@ -57,7 +57,7 @@ public class GateIOClientService extends BaseClient {
 		}
 	}
 
-	@Retryable(value = {RetryableException.class}, maxAttempts = 2, backoff = @Backoff(delay = 20))
+//	@Retryable(value = {RetryableException.class}, maxAttempts = 2, backoff = @Backoff(delay = 20))
 	public List<GetTickerResponse> getTickers(String symbol) {
 		try {
 			List<GetTickerResponse> getTickerResponse = gateIOClient.getTickers(symbol);
