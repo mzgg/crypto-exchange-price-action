@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -34,7 +35,11 @@ public class ExchangeMarketPriceController {
 	@Cacheable(value = "allcurrenies", key = "'value'", unless = "#result.empty", cacheManager = GuavaCacheManagerConfig.ONE_MINUTE)
 	@GetMapping("/gateio/spot/currency_pairs")
 	public List<AllCurrencyResponse> getAllCurrency() {
-		return gateIOClientService.getAllCurrency();
+		try {
+			return gateIOClientService.getAllCurrency();
+		} catch (Exception e) {
+			return Collections.emptyList();
+		}
 	}
 
 	@GetMapping("/gateio/spot/order_book")

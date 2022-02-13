@@ -70,7 +70,7 @@ public class GateIOClientService extends BaseClient {
 		return Collections.emptyList();
 	}
 
-	@Retryable(value = {RetryableException.class}, maxAttempts = 2, backoff = @Backoff(delay = 20))
+	@Retryable(value = {RetryableException.class}, maxAttempts = 10, backoff = @Backoff(delay = 100))
 	public List<AllCurrencyResponse> getAllCurrency() {
 		try {
 			List<AllCurrencyResponse> getTickerResponse = gateIOClient.getAllCurrency();
@@ -79,6 +79,7 @@ public class GateIOClientService extends BaseClient {
 			}
 		} catch (Exception ex) {
 			log.error("get all curreny is error from gateIO market, cause:{}", ex.getMessage());
+			throw ex;
 		}
 		return Collections.emptyList();
 	}
