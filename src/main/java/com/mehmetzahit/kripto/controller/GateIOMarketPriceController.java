@@ -18,22 +18,22 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/exchange")
-public class ExchangeMarketPriceController {
+@RequestMapping("/exchange/gateio")
+public class GateIOMarketPriceController {
 	private final GateIOClientService gateIOClientService;
 
-	@GetMapping("/gateio/spot/trades")
+	@GetMapping("/spot/trades")
 	public List<GateIOResponse> getValueFromGetIORedirect(@RequestParam(name = "currency_pair") String symbol) {
 		return gateIOClientService.getPairData(symbol);
 	}
 
-	@GetMapping("/gateio/spot/tickers")
+	@GetMapping("/spot/tickers")
 	public List<GetTickerResponse> getTicker(@RequestParam(name = "currency_pair") String symbol) {
 		return gateIOClientService.getTickers(symbol);
 	}
 
 	@Cacheable(value = "allcurrenies", key = "'value'", unless = "#result.empty", cacheManager = GuavaCacheManagerConfig.ONE_MINUTE)
-	@GetMapping("/gateio/spot/currency_pairs")
+	@GetMapping("/spot/currency_pairs")
 	public List<AllCurrencyResponse> getAllCurrency() {
 		try {
 			return gateIOClientService.getAllCurrency();
@@ -42,7 +42,7 @@ public class ExchangeMarketPriceController {
 		}
 	}
 
-	@GetMapping("/gateio/spot/order_book")
+	@GetMapping("/spot/order_book")
 	public OrderBookResponse gerOrderBook(@RequestParam(name = "currency_pair") String symbol, @RequestParam(name = "limit") String limit) {
 		return gateIOClientService.gerOrderBook(symbol, limit);
 	}

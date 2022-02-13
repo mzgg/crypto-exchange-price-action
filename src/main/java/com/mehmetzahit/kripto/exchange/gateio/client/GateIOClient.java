@@ -1,7 +1,6 @@
 package com.mehmetzahit.kripto.exchange.gateio.client;
 
 
-import com.mehmetzahit.kripto.exchange.gateio.config.GateIOClientConfig;
 import com.mehmetzahit.kripto.exchange.gateio.resource.AllCurrencyResponse;
 import com.mehmetzahit.kripto.exchange.gateio.resource.GateIOResponse;
 import com.mehmetzahit.kripto.exchange.gateio.resource.GetTickerResponse;
