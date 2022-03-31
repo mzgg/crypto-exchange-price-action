@@ -1,6 +1,6 @@
 cd ../
 
-git pull https://github.com/mzgg/crypto-exchange-price-action.git
+git clone  https://github.com/mzgg/crypto-exchange-price-action.git
 
 mvn clean install
 
