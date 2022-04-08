@@ -2,7 +2,7 @@ package com.mehmetzahit.kripto.controller;
 
 import com.mehmetzahit.kripto.exchange.mexc.resource.MexcOrderBookResponse;
 import com.mehmetzahit.kripto.exchange.mexc.resource.MexcTickerResponse;
-import com.mehmetzahit.kripto.exchange.mexc.service.MexcClientService;
+import com.mehmetzahit.kripto.exchange.mexc.service.MexcV3ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/exchange/mexc/api/v3")
 public class MexcMarketPriceController {
-	private final MexcClientService mexcClientService;
+	private final MexcV3ClientService mexcClientService;
 
 
 	@GetMapping("/ticker/24hr")

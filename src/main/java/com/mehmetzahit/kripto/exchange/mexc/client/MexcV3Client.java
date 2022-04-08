@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(value = "mexc", url = "${mexc.spot.url}")
-public interface MexcClient {
+public interface MexcV3Client {
 
 	@RequestMapping(method = RequestMethod.GET, value = "ticker/24hr")
 	MexcTickerResponse getPairData(@RequestParam(value = "symbol") String symbol);

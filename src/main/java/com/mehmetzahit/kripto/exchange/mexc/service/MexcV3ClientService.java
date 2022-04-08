@@ -1,6 +1,6 @@
 package com.mehmetzahit.kripto.exchange.mexc.service;
 
-import com.mehmetzahit.kripto.exchange.mexc.client.MexcClient;
+import com.mehmetzahit.kripto.exchange.mexc.client.MexcV3Client;
 import com.mehmetzahit.kripto.exchange.mexc.resource.MexcOrderBookResponse;
 import com.mehmetzahit.kripto.exchange.mexc.resource.MexcTickerResponse;
 import lombok.RequiredArgsConstructor;
@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class MexcClientService {
+public class MexcV3ClientService {
 
-	private final MexcClient mexcClient;
+	private final MexcV3Client mexcClient;
 
 	public MexcTickerResponse getPriceValue(String symbol) {
 		return mexcClient.getPairData(symbol);
