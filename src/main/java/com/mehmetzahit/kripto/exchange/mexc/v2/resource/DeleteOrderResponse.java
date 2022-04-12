@@ -4,12 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.io.Serializable;
+import java.util.Map;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class MexcResponse{
-	private Integer code;
-	private List<DataItem> data;
+public class DeleteOrderResponse implements Serializable {
+	private int code;
+	private Map<String, String> data;
+
 }

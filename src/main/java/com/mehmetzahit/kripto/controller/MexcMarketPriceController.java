@@ -1,8 +1,9 @@
 package com.mehmetzahit.kripto.controller;
 
-import com.mehmetzahit.kripto.exchange.mexc.resource.MexcOrderBookResponse;
-import com.mehmetzahit.kripto.exchange.mexc.resource.MexcTickerResponse;
-import com.mehmetzahit.kripto.exchange.mexc.service.MexcV3ClientService;
+
+import com.mehmetzahit.kripto.exchange.mexc.v3.resource.MexcOrderBookResponse;
+import com.mehmetzahit.kripto.exchange.mexc.v3.resource.MexcTickerResponse;
+import com.mehmetzahit.kripto.exchange.mexc.v3.service.MexcV3ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

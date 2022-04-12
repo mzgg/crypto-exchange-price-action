@@ -1,4 +1,4 @@
-package com.mehmetzahit.kripto.exchange.mexc.v2.resource;
+package com.mehmetzahit.kripto.exchange.mexc.v2.resource.getpair;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

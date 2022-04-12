@@ -1,8 +1,10 @@
-package com.mehmetzahit.kripto.exchange.mexc.service;
+package com.mehmetzahit.kripto.exchange.mexc.v3.service;
 
-import com.mehmetzahit.kripto.exchange.mexc.client.MexcV3Client;
-import com.mehmetzahit.kripto.exchange.mexc.resource.MexcOrderBookResponse;
-import com.mehmetzahit.kripto.exchange.mexc.resource.MexcTickerResponse;
+
+
+import com.mehmetzahit.kripto.exchange.mexc.v3.client.MexcV3Client;
+import com.mehmetzahit.kripto.exchange.mexc.v3.resource.MexcOrderBookResponse;
+import com.mehmetzahit.kripto.exchange.mexc.v3.resource.MexcTickerResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

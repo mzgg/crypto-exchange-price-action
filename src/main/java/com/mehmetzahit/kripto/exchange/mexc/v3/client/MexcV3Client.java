@@ -1,8 +1,10 @@
-package com.mehmetzahit.kripto.exchange.mexc.client;
+package com.mehmetzahit.kripto.exchange.mexc.v3.client;
 
 
-import com.mehmetzahit.kripto.exchange.mexc.resource.MexcOrderBookResponse;
-import com.mehmetzahit.kripto.exchange.mexc.resource.MexcTickerResponse;
+
+
+import com.mehmetzahit.kripto.exchange.mexc.v3.resource.MexcOrderBookResponse;
+import com.mehmetzahit.kripto.exchange.mexc.v3.resource.MexcTickerResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
