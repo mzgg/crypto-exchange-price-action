@@ -1,6 +1,7 @@
 package com.mehmetzahit.kripto.exchange.huobi.client;
 
 
+import com.mehmetzahit.kripto.exchange.huobi.resource.HuobiOrderBookResponse;
 import com.mehmetzahit.kripto.exchange.huobi.resource.HuobiTickerResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,11 @@ public interface HuobiClient {
 
 	@RequestMapping(method = RequestMethod.GET, value = "market/detail/merged")
 	HuobiTickerResponse getPairData(@RequestParam(value = "symbol") String symbol);
+
+	@RequestMapping(method = RequestMethod.GET, value = "market/depth")
+	HuobiOrderBookResponse getOrderBook(@RequestParam(value = "symbol") String symbol,
+										@RequestParam(value = "depth") String depth,
+										@RequestParam(value = "type") String type);
 
 
 }

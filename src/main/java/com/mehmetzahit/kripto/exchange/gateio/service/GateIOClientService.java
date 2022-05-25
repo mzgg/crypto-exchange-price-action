@@ -94,4 +94,14 @@ public class GateIOClientService extends BaseClient {
 		return null;
 	}
 
+	@Retryable(value = {RetryableException.class}, maxAttempts = 2, backoff = @Backoff(delay = 20))
+	public List<List<String>> getCandlesticks(String symbol, String interval, String limit) {
+		try {
+			return gateIOClient.getCandlesticks(symbol, interval, limit);
+		} catch (Exception ex) {
+			log.error("get candlesticks is error from gateIO market, cause:{}", ex.getMessage());
+		}
+		return null;
+	}
+
 }

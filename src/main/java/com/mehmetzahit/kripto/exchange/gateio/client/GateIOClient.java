@@ -36,6 +36,11 @@ public interface GateIOClient {
 	@RequestMapping(method = RequestMethod.GET, value = "spot/currency_pairs")
 	List<AllCurrencyResponse> getAllCurrency();
 
+	@RequestMapping(method = RequestMethod.GET, value = "/spot/candlesticks")
+	List<List<String>> getCandlesticks(@RequestParam(value = "currency_pair") String symbol,
+									   @RequestParam(value = "interval") String interval,
+									   @RequestParam(value = "limit") String limit);
+
 }
 
 

@@ -8,10 +8,7 @@ import com.mehmetzahit.kripto.exchange.gateio.resource.OrderBookResponse;
 import com.mehmetzahit.kripto.exchange.gateio.service.GateIOClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -46,4 +43,14 @@ public class GateIOMarketPriceController {
 	public OrderBookResponse gerOrderBook(@RequestParam(name = "currency_pair") String symbol, @RequestParam(name = "limit") String limit) {
 		return gateIOClientService.gerOrderBook(symbol, limit);
 	}
+
+	@GetMapping("/spot/candlesticks")
+	List<List<String>> getCandlesticks(@RequestParam(value = "currency_pair") String symbol,
+									   @RequestParam(value = "interval") String interval,
+									   @RequestParam(value = "limit") String limit) {
+		return gateIOClientService.getCandlesticks(symbol, interval, limit);
+
+	}
+
+
 }

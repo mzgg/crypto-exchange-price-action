@@ -1,5 +1,6 @@
 package com.mehmetzahit.kripto.controller;
 
+import com.mehmetzahit.kripto.exchange.huobi.resource.HuobiOrderBookResponse;
 import com.mehmetzahit.kripto.exchange.huobi.resource.HuobiTickerResponse;
 import com.mehmetzahit.kripto.exchange.huobi.service.HuobiClientService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,13 @@ public class HuobiController {
 	@GetMapping("/market/detail/merged")
 	public HuobiTickerResponse getTicker(@RequestParam(name = "symbol") String symbol) {
 		return huobiClientService.getTicker(symbol);
+	}
+
+	@GetMapping("/market/depth")
+	public HuobiOrderBookResponse getOrderBookByDepthAndType(@RequestParam(name = "symbol") String symbol,
+															 @RequestParam(name = "depth") String depth,
+															 @RequestParam(name = "type") String type) {
+		return huobiClientService.getOrderBookByDepthAndType(symbol, depth, type);
 	}
 
 }
