@@ -1,6 +1,7 @@
 echo Starting...
 
 nohup java -Dcom.sun.management.jmxremote=true \
+-Dserver.port=5353 \
 -Dcom.sun.management.jmxremote.port=9050 \
 -Dcom.sun.management.jmxremote.rmi.port=9050 \
 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false \
