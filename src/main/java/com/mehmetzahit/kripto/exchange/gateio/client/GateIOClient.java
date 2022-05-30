@@ -30,7 +30,7 @@ public interface GateIOClient {
 									 @RequestParam(value = "limit") String limit);
 
 	@RequestMapping(method = RequestMethod.GET, value = "spot/tickers")
-	List<GetTickerResponse> getTickers(@RequestParam(value = "currency_pair") String symbol);
+	List<GetTickerResponse> getTickers(@RequestParam(value = "currency_pair",required = false) String symbol);
 
 
 	@RequestMapping(method = RequestMethod.GET, value = "spot/currency_pairs")

@@ -25,7 +25,7 @@ public class GateIOMarketPriceController {
 	}
 
 	@GetMapping("/spot/tickers")
-	public List<GetTickerResponse> getTicker(@RequestParam(name = "currency_pair") String symbol) {
+	public List<GetTickerResponse> getTicker(@RequestParam(name = "currency_pair",required = false) String symbol) {
 		return gateIOClientService.getTickers(symbol);
 	}
 

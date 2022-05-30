@@ -1,5 +1,7 @@
 package com.mehmetzahit.kripto.controller;
 
+import com.mehmetzahit.kripto.exchange.huobi.resource.HuobiGetAllSymbolResponse;
+import com.mehmetzahit.kripto.exchange.huobi.resource.HuobiGetAllTickers;
 import com.mehmetzahit.kripto.exchange.huobi.resource.HuobiOrderBookResponse;
 import com.mehmetzahit.kripto.exchange.huobi.resource.HuobiTickerResponse;
 import com.mehmetzahit.kripto.exchange.huobi.service.HuobiClientService;
@@ -26,6 +28,16 @@ public class HuobiController {
 															 @RequestParam(name = "depth") String depth,
 															 @RequestParam(name = "type") String type) {
 		return huobiClientService.getOrderBookByDepthAndType(symbol, depth, type);
+	}
+
+	@GetMapping("/v2/settings/common/symbols")
+	public HuobiGetAllSymbolResponse getAllSymbols() {
+		return huobiClientService.getAllSymbols();
+	}
+
+	@GetMapping("/market/tickers")
+	public HuobiGetAllTickers getAllTicker() {
+		return huobiClientService.getAllTicker();
 	}
 
 }

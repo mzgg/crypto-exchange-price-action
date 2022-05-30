@@ -1,6 +1,8 @@
 package com.mehmetzahit.kripto.exchange.huobi.client;
 
 
+import com.mehmetzahit.kripto.exchange.huobi.resource.HuobiGetAllSymbolResponse;
+import com.mehmetzahit.kripto.exchange.huobi.resource.HuobiGetAllTickers;
 import com.mehmetzahit.kripto.exchange.huobi.resource.HuobiOrderBookResponse;
 import com.mehmetzahit.kripto.exchange.huobi.resource.HuobiTickerResponse;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -18,6 +20,12 @@ public interface HuobiClient {
 	HuobiOrderBookResponse getOrderBook(@RequestParam(value = "symbol") String symbol,
 										@RequestParam(value = "depth") String depth,
 										@RequestParam(value = "type") String type);
+
+	@RequestMapping(method = RequestMethod.GET, value = "v2/settings/common/symbols")
+	HuobiGetAllSymbolResponse getAllSymbols();
+
+	@RequestMapping(method = RequestMethod.GET, value = "market/tickers")
+	HuobiGetAllTickers getAllTicker();
 
 
 }
