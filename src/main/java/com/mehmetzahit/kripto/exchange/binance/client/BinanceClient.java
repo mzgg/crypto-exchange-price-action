@@ -18,7 +18,10 @@ public interface BinanceClient {
 	BinanceResponse getPairData(@RequestParam(value = "symbol") String symbol);
 
 	@RequestMapping(method = RequestMethod.GET, value = "ticker/24hr")
-	List<BinanceTickerResponse> getTicker(@RequestParam(value = "symbol", required = false) String symbol);
+	BinanceTickerResponse getTickerBySymbol(@RequestParam(value = "symbol") String symbol);
+
+	@RequestMapping(method = RequestMethod.GET, value = "ticker/24hr")
+	List<BinanceTickerResponse> getAllTicker();
 
 	@RequestMapping(method = RequestMethod.GET, value = "exchangeInfo")
 	BinanceExchangeInfoResponse exchangeInfo();

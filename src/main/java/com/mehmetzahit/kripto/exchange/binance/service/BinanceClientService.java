@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Objects;
 
 @Slf4j
 @Component
@@ -21,9 +22,13 @@ public class BinanceClientService   {
 		return binanceClient.getPairData(symbol);
 	}
 
-	public List<BinanceTickerResponse> getTicker(String symbol) {
-		return binanceClient.getTicker(symbol);
+	public Object getTickerBySymbol(String symbol) {
+		if (Objects.isNull(symbol)){
+			return binanceClient.getAllTicker();
+		}
+		return binanceClient.getTickerBySymbol(symbol);
 	}
+
 
 	public BinanceExchangeInfoResponse exchangeInfo() {
 		return binanceClient.exchangeInfo();

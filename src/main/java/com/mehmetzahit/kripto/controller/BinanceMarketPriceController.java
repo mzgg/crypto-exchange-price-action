@@ -25,9 +25,10 @@ public class BinanceMarketPriceController {
 	}
 
 	@GetMapping("/ticker/24hr")
-	public List<BinanceTickerResponse> getTicker(@RequestParam(name = "symbol") String symbol) {
-		return binanceClientService.getTicker(symbol);
+	public Object getTicker(@RequestParam(name = "symbol",required = false) String symbol) {
+		return binanceClientService.getTickerBySymbol(symbol);
 	}
+
 
 	@GetMapping("/exchangeInfo")
 	public BinanceExchangeInfoResponse exchangeInfo() {
