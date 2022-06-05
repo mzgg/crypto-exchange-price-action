@@ -2,6 +2,7 @@ package com.mehmetzahit.kripto.exchange.binance.client;
 
 
 import com.mehmetzahit.kripto.exchange.binance.resource.BinanceExchangeInfoResponse;
+import com.mehmetzahit.kripto.exchange.binance.resource.BinanceOrderBookResponse;
 import com.mehmetzahit.kripto.exchange.binance.resource.BinanceResponse;
 import com.mehmetzahit.kripto.exchange.binance.resource.BinanceTickerResponse;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -25,5 +26,8 @@ public interface BinanceClient {
 
 	@RequestMapping(method = RequestMethod.GET, value = "exchangeInfo")
 	BinanceExchangeInfoResponse exchangeInfo();
+
+	@RequestMapping(method = RequestMethod.GET, value = "depth")
+	BinanceOrderBookResponse getOrderBook(@RequestParam(value = "symbol") String symbol, @RequestParam(value = "limit") String limit);
 
 }
