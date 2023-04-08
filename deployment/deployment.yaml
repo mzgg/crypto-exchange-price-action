@@ -5,7 +5,7 @@ metadata:
   labels:
     app: momoli-price-action
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: momoli-price-action
@@ -21,11 +21,23 @@ spec:
             - containerPort: 8080
           resources:
             requests:
-              memory: "128M"
+              memory: "256M"
               cpu: "500m"
             limits:
-              memory: "512M"
-              cpu: "1"
+              memory: 1Gi
+              cpu: "1500m"
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 5353
+            initialDelaySeconds: 8
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 5353
+            initialDelaySeconds: 5
+            periodSeconds: 5
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
