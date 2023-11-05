@@ -29,7 +29,7 @@ public class GateIOMarketPriceController {
 		return gateIOClientService.getTickers(symbol);
 	}
 
-	@Cacheable(value = "allcurrenies", key = "'value'", unless = "#result.empty", cacheManager = GuavaCacheManagerConfig.ONE_MINUTE)
+	//@Cacheable(value = "allcurrenies", key = "'value'", unless = "#result.empty", cacheManager = GuavaCacheManagerConfig.ONE_MINUTE)
 	@GetMapping("/spot/currency_pairs")
 	public List<AllCurrencyResponse> getAllCurrency() {
 		try {
